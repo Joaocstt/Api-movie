@@ -8,7 +8,6 @@ namespace Api_movie.Repositories
     public class MovieRepository : IMovieRepository
     {
         private readonly MovieContext _context;
-
         public MovieRepository(MovieContext context)
         {
             _context = context; 
@@ -20,14 +19,12 @@ namespace Api_movie.Repositories
             await _context.SaveChangesAsync();  
             return movie;   
         }
-
         public async Task DeleteMovieAsync(Movie movie)
         {
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
             
         }
-
         public async Task<List<Movie>> GetAllMoviesAsync()
         {
            return await _context.Movies.ToListAsync();
