@@ -5,7 +5,6 @@ namespace Api_movie.Extensions
 {
     internal static class DbContextExtensions
     {
-
         internal static void AddMovieContext(this IServiceCollection services, IConfiguration configuration)
 
         {
@@ -14,7 +13,7 @@ namespace Api_movie.Extensions
 
             services.AddDbContext<MovieContext>(options =>
                 options.UseMySql(connectionString, new MySqlServerVersion(serverVersion),
-                    builder => builder.MigrationsAssembly("Api-movie")));
+                    builder => builder.MigrationsAssembly(typeof(DbContextExtensions).Assembly.FullName)));
         }
     } 
 }

@@ -41,5 +41,11 @@ namespace Api_movie.Repositories
             await _context.SaveChangesAsync();
             return movie;
         }
+
+        public async Task<Movie> GetMovieByNameAsync(string movie)
+        {
+            return await _context.Movies.FirstOrDefaultAsync(m => m.Name == movie);
+        }
+
     }
 }
