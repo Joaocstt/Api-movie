@@ -1,10 +1,16 @@
 using Api_movie.Extensions;
+using Api_movie.Repositories;
+using Api_movie.Repositories.Interfaces;
+using Api_movie.Services;
+using Api_movie.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddMovieContext(builder.Configuration);
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,3 +33,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

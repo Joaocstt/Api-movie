@@ -21,7 +21,7 @@ namespace Api_movie.Repositories
         }
         public async Task DeleteMovieAsync(Movie movie)
         {
-            _context.Movies.Add(movie);
+            _context.Movies.Remove(movie);
             await _context.SaveChangesAsync();
             
         }
