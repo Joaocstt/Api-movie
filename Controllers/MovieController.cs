@@ -39,8 +39,21 @@ namespace Api_movie.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllMoviesAsync()
         {
-            var movies = await _movieService.GetAllMoviesAsync(); 
-            return Ok(movies.ToList()); 
+            var movies = await _movieService.GetAllMoviesAsync();
+            return Ok(movies.ToList());
         }
+
+        [HttpPut("{id}")]
+
+        public async Task<IActionResult> UpdateMovieAsync(int id, [FromBody] Movie movie)
+        {
+            movie = await _movieService.UpdateMovieAsync(movie);
+            return Ok("Filme editado com sucesso");
+
+        }
+
+        
+   
+            
     }
 }
