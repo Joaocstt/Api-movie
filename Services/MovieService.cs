@@ -49,7 +49,11 @@ namespace Api_movie.Services
                 throw new Exception("Filme não encontrado.");
             }
 
-            return await _repository.UpdateMovieAsync(movie);
+            existingMovie.Name = movie.Name;
+            existingMovie.Category = movie.Category;
+            existingMovie.DateRelease = movie.DateRelease;
+
+            return await _repository.UpdateMovieAsync(existingMovie);
         }
     }
 }

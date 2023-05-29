@@ -47,13 +47,9 @@ namespace Api_movie.Controllers
 
         public async Task<IActionResult> UpdateMovieAsync(int id, [FromBody] Movie movie)
         {
-            movie = await _movieService.UpdateMovieAsync(movie);
+            await _movieService.UpdateMovieAsync(movie);
             return Ok("Filme editado com sucesso");
 
         }
-
-        
-   
-            
     }
 }
