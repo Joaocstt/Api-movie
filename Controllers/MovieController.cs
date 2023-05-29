@@ -1,7 +1,5 @@
 ﻿using Api_movie.Models;
-using Api_movie.Repositories.Interfaces;
 using Api_movie.Services.Interfaces;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api_movie.Controllers
@@ -51,7 +49,7 @@ namespace Api_movie.Controllers
             }
         }
 
-            [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAllMoviesAsync()
         {
             var movies = await _movieService.GetAllMoviesAsync();
