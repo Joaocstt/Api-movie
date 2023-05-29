@@ -36,7 +36,22 @@ namespace Api_movie.Controllers
             return Ok($"Filme deletado com sucesso!");
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMovieByIdAsync(int id)
+        {
+            try
+            {
+                var movies = await _movieService.GetMovieByIdAsync(id);
+                return Ok(movies);
+
+            }
+            catch (Exception)
+            {
+                return NotFound("Filme não encontrado");
+            }
+        }
+
+            [HttpGet]
         public async Task<IActionResult> GetAllMoviesAsync()
         {
             var movies = await _movieService.GetAllMoviesAsync();
