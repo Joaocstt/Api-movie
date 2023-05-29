@@ -38,7 +38,12 @@ namespace Api_movie.Services
 
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
-            return await _repository.GetMovieByIdAsync(id);
+            var movie = await _repository.GetMovieByIdAsync(id);
+            if (movie == null) 
+            {
+                throw new Exception("Filme não encontrado. Verifique o id informado");
+            }
+            return movie;
         }
 
         public async Task<Movie> UpdateMovieAsync(Movie movie)
